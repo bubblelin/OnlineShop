@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.yanlin.shop.categorysecond.vo.CategorySecond" table="categorysecond">
+		<id name="csid">
+			<generator class="native"/>
+		</id>
+		<property name="csname"/>
+		<!-- 多對一的關聯，一是：一級分類的對象 -->
+		<many-to-one name="category" lazy="false" class="com.yanlin.shop.category.vo.Category" column="cid"/>
+		<!-- 一对多的关系，多是：product的对象 -->
+		<set name="productSet">
+			<key column="csid"/>
+			<one-to-many class="com.yanlin.shop.product.vo.Product"/>
+		</set>
+	</class>
+</hibernate-mapping>

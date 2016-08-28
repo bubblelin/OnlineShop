@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.shop.user.vo.User" table="user">
+		<id name="uid">
+			<generator class="native"/>
+		</id>
+		<property name="username"/>
+		<property name="password"/>
+		<property name="name"/>
+		<property name="email"/>
+		<property name="phone"/>
+		<property name="addr"/>
+		<property name="state"/>
+		<property name="code"/>
+		<!-- 用户与订单的关系，一对多关系 -->
+		<set name="orderSet">
+			<key column="uid"/>
+			<one-to-many class="com.yanlin.shop.order.vo.Order"/>
+		</set>
+	</class>
+</hibernate-mapping>
